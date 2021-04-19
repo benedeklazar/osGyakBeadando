@@ -1,0 +1,14 @@
+#!bin/bash
+
+read -p "Adj meg egy várost: " varos
+
+echo "Az időjárás $varos -en: "
+
+GET idokep.hu/idojaras/$varos | grep -o -P '(?<=<div class="ik current-weather">).*(?=</div>)'
+
+echo "A hőmérséklet $varos -en: "
+
+GET idokep.hu/idojaras/$varos | grep -o -P '(?<=<div class="ik current-temperature">).*(?=</div>)'
+
+
+
